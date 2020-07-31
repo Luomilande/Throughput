@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using 数据量测试.Models;
 
 namespace 数据量测试.Controllers
 {
@@ -17,12 +21,32 @@ namespace 数据量测试.Controllers
 
             return View();
         }
+        public string Spit1()
+        {
+            //EF：简单数据-2446毫秒
+            Stopwatch watch1 = Stopwatch.StartNew();
+            List<student> st_data = db.student.ToList();
+            if (st_data.Count==0) return "读取失败";
+            watch1.Stop();
+
+            return "EF最后用时："+watch1.ElapsedMilliseconds;
+        }
+        public string Spit2()
+        {
+            //存储过程：简单数据-572毫秒
+            Stopwatch watch2 = Stopwatch.StartNew();
+            List<student> st_data2 = db.Database.SqlQuery<student>("exec sp_Select_Student").ToList();
+            if (st_data2.Count == 0) return "读取失败";
+            watch2.Stop();
+
+            return "存储过程用时：" + watch2.ElapsedMilliseconds;
+        }
         public string Test()
         {
            
             List<Models.student> List = new List< Models.student > ();
 
-            for (int number = 0; number < 90000; number++)
+            for (int number = 0; number < 50000; number++)
             {
                 string name = GetTestData();
                 bool i_sex = true;
@@ -33,9 +57,10 @@ namespace 数据量测试.Controllers
                  List.Add(new Models.student { s_name=name,sex= i_sex});
             }
 
+            //存储过程
             //db.sp_Insert_Student(number, name,sex);
             Stopwatch watch = Stopwatch.StartNew();
-
+            //使用EntityFramework.BulkInsert插件进行大批量数据存储
             db.BulkInsert(List);
             db.BulkSaveChanges();
             watch.Stop();

@@ -194,6 +194,9 @@
     <Compile Include="Models\login.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_Select_Student_Result.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\student.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>

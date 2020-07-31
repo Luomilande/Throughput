@@ -45,5 +45,10 @@ namespace 数据量测试.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Insert_Student", s_nameParameter, sexParameter);
         }
+    
+        public virtual ObjectResult<sp_Select_Student_Result> sp_Select_Student()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Select_Student_Result>("sp_Select_Student");
+        }
     }
 }

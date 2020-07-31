@@ -60,6 +60,7 @@
           <Parameter Name="s_name" Type="nchar" Mode="In" />
           <Parameter Name="sex" Type="bit" Mode="In" />
         </Function>
+        <Function Name="sp_Select_Student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BookModelStoreContainer">
           <EntitySet Name="class" EntityType="Self.class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="grade" EntityType="Self.grade" Schema="dbo" store:Type="Tables" />
@@ -81,6 +82,7 @@
           <EntitySet Name="login" EntityType="BookModel.login" />
           <EntitySet Name="student" EntityType="BookModel.student" />
           <EntitySet Name="sysdiagrams" EntityType="BookModel.sysdiagrams" />
+          <FunctionImport Name="sp_Select_Student" ReturnType="Collection(BookModel.sp_Select_Student_Result)" />
         </EntityContainer>
         <EntityType Name="class">
           <Key>
@@ -133,6 +135,20 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <ComplexType Name="sp_Select_Student_Result">
+          <Property Type="Int32" Name="s_number" Nullable="false" />
+          <Property Type="String" Name="s_name" Nullable="true" MaxLength="8" />
+          <Property Type="Boolean" Name="sex" Nullable="true" />
+          <Property Type="DateTime" Name="birthday" Nullable="true" Precision="23" />
+          <Property Type="String" Name="native" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="c_number" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="dep_number" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="tel" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="zipcode" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="note" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -196,6 +212,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_Student" FunctionName="BookModel.Store.sp_Select_Student">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.sp_Select_Student_Result">
+                <ScalarProperty Name="s_number" ColumnName="s_number" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="native" ColumnName="native" />
+                <ScalarProperty Name="c_number" ColumnName="c_number" />
+                <ScalarProperty Name="dep_number" ColumnName="dep_number" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
