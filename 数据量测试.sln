@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "数据量测试", "数据量测试\数据量测试.csproj", "{10A6F0B5-D244-4D2F-A5F6-6BEB7F0B8D75}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreWeb项目", "CoreWeb项目\CoreWeb项目.csproj", "{40522A52-0FCB-4C68-94EB-5AEE337FD6B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "数据结构", "数据结构\数据结构.csproj", "{50A06B64-2119-4EF9-955D-506D8328B68E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{10A6F0B5-D244-4D2F-A5F6-6BEB7F0B8D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A6F0B5-D244-4D2F-A5F6-6BEB7F0B8D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A6F0B5-D244-4D2F-A5F6-6BEB7F0B8D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40522A52-0FCB-4C68-94EB-5AEE337FD6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40522A52-0FCB-4C68-94EB-5AEE337FD6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40522A52-0FCB-4C68-94EB-5AEE337FD6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40522A52-0FCB-4C68-94EB-5AEE337FD6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A06B64-2119-4EF9-955D-506D8328B68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A06B64-2119-4EF9-955D-506D8328B68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A06B64-2119-4EF9-955D-506D8328B68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A06B64-2119-4EF9-955D-506D8328B68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
