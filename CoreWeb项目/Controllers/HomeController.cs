@@ -12,6 +12,11 @@ namespace CoreWeb项目.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //private readonly MyWebDbContext _context;
+        //public HomeController(MyWebDbContext dbContext)
+        //{
+        //    _context = dbContext;
+        //}
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -20,6 +25,7 @@ namespace CoreWeb项目.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
