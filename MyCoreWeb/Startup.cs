@@ -28,7 +28,7 @@ namespace MyCoreWeb
         public void ConfigureServices(IServiceCollection services)
         {
             //添加SQL Server连接
-            services.AddDbContext<CoreContext>(options =>
+            services.AddDbContext<MyCoreWebContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SQLServerConnection"));
             });
@@ -55,6 +55,9 @@ namespace MyCoreWeb
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            //过滤器
+            app.UseAuthorization();
 
             app.UseRouting();
 

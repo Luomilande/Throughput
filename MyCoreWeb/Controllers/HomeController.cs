@@ -11,14 +11,8 @@ namespace MyCoreWeb.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
-        private CoreContext _context;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-        public HomeController(CoreContext context)
+        private MyCoreWebContext _context;
+        public HomeController(MyCoreWebContext context)
         {
             _context = context;
         }
@@ -27,11 +21,12 @@ namespace MyCoreWeb.Controllers
             
             return View();
         }
+        [ActonFilter]
         public JsonResult json()
         {
             for(int i=0;i<100;i++)
             {
-                _context.Topics.Add(new Topic()
+                _context.Topics.Add(new Topics()
                 {
                     Title = "Hello World",
                     Content = "你好!",
