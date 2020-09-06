@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreWeb项目.Models
+namespace MyCoreWeb.Models
 {
     public class ErrorViewModel
     {

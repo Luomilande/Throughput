@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using System.Threading.Tasks;
-using CoreWeb椤圭洰.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,8 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyCoreWeb.Models;
 
-namespace CoreWeb椤圭洰
+namespace MyCoreWeb
 {
     public class Startup
     {
@@ -25,9 +27,15 @@ namespace CoreWeb椤圭洰
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MyWebDbContext>(options =>
+            //添加SQL Server连接
+            services.AddDbContext<CoreContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SQLServerConnection"));
+            });
+            //解决转json中文乱码
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
             });
             services.AddControllersWithViews();
         }
