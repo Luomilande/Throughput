@@ -101,6 +101,10 @@ namespace MyCoreAPI.Jwt
         public bool ValiToken(string encodeJwt, Func<Dictionary<string, string>, bool> validatePayLoad = null)
         {
             var success = true;
+
+            encodeJwt = encodeJwt.Remove(0, 1);
+            encodeJwt = encodeJwt.Remove(encodeJwt.Length - 1, 1);
+
             var jwtArr = encodeJwt.Split('.');
             if (jwtArr.Length < 3)//数据格式都不对直接pass
             {
@@ -130,6 +134,9 @@ namespace MyCoreAPI.Jwt
 
             return success;
         }
+
+
+
         /// <summary>
         /// 时间转换
         /// </summary>
@@ -139,6 +146,9 @@ namespace MyCoreAPI.Jwt
         {
             return (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
         }
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -148,6 +158,9 @@ namespace MyCoreAPI.Jwt
         /// <returns></returns>
         public TokenType ValiTokenState(string encodeJwt, Func<Dictionary<string, string>, bool> validatePayLoad, Action<Dictionary<string, string>> action)
         {
+            encodeJwt = encodeJwt.Remove(0, 1);
+            encodeJwt = encodeJwt.Remove(encodeJwt.Length - 1);
+
             var jwtArr = encodeJwt.Split('.');
             if (jwtArr.Length < 3)//数据格式都不对直接pass
             {

@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MyCoreAPI.Filter;
 using MyCoreAPI.Jwt;
 using MyCoreAPI.Models;
 
@@ -54,6 +55,8 @@ namespace MyCoreAPI
             }).
             AddJwtBearer();
             #endregion
+            //¹ýÂËÆ÷×¢²á
+            services.AddScoped<TokenFilter>();
 
             services.AddControllers();
         }

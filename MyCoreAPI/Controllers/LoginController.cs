@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyCoreAPI.Filter;
 using MyCoreAPI.Jwt;
 using MyCoreAPI.Models;
 
@@ -92,6 +93,7 @@ namespace MyCoreAPI.Controllers
         /// <param name="tokenStr"></param>
         /// <returns></returns>
         [HttpGet]
+        [ServiceFilter(typeof(TokenFilter))]
         public ReturnModel ValiTokenState()
         {
             string tokenStr=Request.Headers["Authorization"];
